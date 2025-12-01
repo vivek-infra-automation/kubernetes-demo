@@ -21,11 +21,20 @@ spec:
         - name: WORDPRESS_DB_HOST
           value: "mysql-service"
         - name: WORDPRESS_DB_USER
-          value: "wordpress"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: MYSQL_USER
         - name: WORDPRESS_DB_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: MYSQL_PASSWORD
         - name: WORDPRESS_DB_NAME
-          value: "wordpress"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: MYSQL_DATABASE
         volumeMounts:
         - name: wordpress-storage
           mountPath: /var/www/html

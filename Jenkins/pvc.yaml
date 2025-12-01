@@ -1,11 +1,14 @@
+---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pvc
+  name: jenkins-pvc
+  namespace: jenkins
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
-  storageClassName: ebs-gp3
+  storageClassName: gp2
